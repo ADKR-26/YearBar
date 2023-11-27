@@ -265,3 +265,35 @@ function setResetFlag(e) {
 }
 
 //! SNOW ENDS HERE
+
+
+//! Counter API Starts
+async function fetchData() {
+    try {
+        const response = await fetch('https://counter-api.onrender.com/counter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: 'year-bar',
+            }),
+        });
+
+        // Assuming the API returns JSON
+        const data = await response.json();
+        const visitCount = data?.newData?.visits;
+
+        let visitCounter = document.getElementById('visitCount');
+
+        visitCounter.innerHTML = visitCount;
+
+        // console.log(data.newData.visits);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+fetchData();
+
+//! COUNTER API ENDS
