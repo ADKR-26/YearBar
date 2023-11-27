@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    margin-top: 15%;
+    margin-top: 12%;
 }
 
 progress {
@@ -58,7 +58,7 @@ a {
 }
 .visit {
     color: white;
-    margin-top: 4.2rem;
+    margin-top: 2rem;
     text-decoration: none;
     font-size: 1.2rem;
     display: flex;
