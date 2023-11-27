@@ -63,3 +63,32 @@ a {
         margin-top: 60%;
     }
 }
+
+/* SNOW */
+
+/* body {
+	background: #64b5f6;
+} */
+#snowflakeContainer {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.snowflake {
+	padding-left: 15px;
+	font-family: Times, Georgia, serif;
+	font-size: 14em;
+	line-height: 24px;
+	position: fixed;
+	color: #ffffff;
+	user-select: none;
+	z-index: 1000;
+}
+.snowflake:hover {
+	cursor: default;
+}
+
+#snowflakeInactive {
+    pointer-events: none;
+    opacity: 0;
+}
