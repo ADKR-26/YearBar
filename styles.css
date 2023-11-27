@@ -56,6 +56,24 @@ a {
     align-items: center;
     justify-content: center;
 }
+.visit {
+    color: white;
+    margin-top: 4.2rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.visitCount {
+    color: white;
+    /* margin-top: 10rem; */
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 @media screen and (max-width: 600px) {
