@@ -270,6 +270,9 @@ function setResetFlag(e) {
 //! Counter API Starts
 async function fetchData() {
     try {
+        let visitCounter = document.getElementById('visitCount');
+        visitCounter.innerHTML = 'Loading...';
+
         const response = await fetch('https://counter-api.onrender.com/counter', {
             method: 'POST',
             headers: {
@@ -284,7 +287,6 @@ async function fetchData() {
         const data = await response.json();
         const visitCount = data?.newData?.visits;
 
-        let visitCounter = document.getElementById('visitCount');
 
         visitCounter.innerHTML = visitCount;
 
