@@ -106,7 +106,7 @@ let todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.ge
 let currentYear = date.getFullYear();
 
 
-var start = `${currentYear}-12-20`;
+var start = `${currentYear}-12-5`;
 var end = `${currentYear}-12-30`;
 
 // condition to check christmas week
