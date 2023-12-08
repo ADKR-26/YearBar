@@ -109,8 +109,6 @@ let todayDate = new Date(); // current date and time
 let start = new Date(`${currentYear}-12-05`);
 let end = new Date(`${currentYear}-12-31`);
 
-var start = `${currentYear}-12-5`;
-var end = `${currentYear}-12-30`;
 
 // condition to check christmas week
 if (todayDate >= start && todayDate <= end) {
