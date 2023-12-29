@@ -4,7 +4,6 @@ function getYearPercentage() {
     let startDate = new Date(`${year}-01-01`);
     let secondsInAYear = 31536000;
 
-
     let timeDifference = today - startDate;
 
     // console.log(timeDifference);
@@ -14,7 +13,10 @@ function getYearPercentage() {
 
     // daysDifference = 100;
 
-    let yearCompletePercentInSeconds = ((timeDifferenceInSeconds * 100) / secondsInAYear).toFixed(6);
+    let yearCompletePercentInSeconds = (
+        (timeDifferenceInSeconds * 100) /
+        secondsInAYear
+    ).toFixed(6);
     // let yearCompletePercent = ((daysDifference * 100) / 365).toFixed(2);
 
     // console.log(timeDifferenceInSeconds);
@@ -22,7 +24,7 @@ function getYearPercentage() {
     var progressBar = document.getElementById("myProgress");
     progressBar.value = yearCompletePercentInSeconds;
 
-    var progressData = document.getElementById('data');
+    var progressData = document.getElementById("data");
     data.innerHTML = yearCompletePercentInSeconds + " %";
 }
 
@@ -38,26 +40,25 @@ function getCurrentTime() {
     var seconds = now.getSeconds();
 
     // Add leading zero if the number is less than 10
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    var timeString = hours + ':' + minutes + ':' + seconds;
+    var timeString = hours + ":" + minutes + ":" + seconds;
 
-    document.getElementById('currentTime').textContent = timeString;
+    document.getElementById("currentTime").textContent = timeString;
 }
 
 setInterval(getCurrentTime, 1000);
 
 getCurrentTime();
 
-
-console.log('%cHIRE ME', 'font-size: 24px; color: #3498db; font-weight: bold;');
+console.log("%cHIRE ME", "font-size: 24px; color: #3498db; font-weight: bold;");
 
 console.log(
-    '%cCheck out my portfolio: %chttps://adkr-portfolio.vercel.app/',
-    'font-size: 16px; color: #2ecc71; font-weight: bold;',
-    'font-size: 16px; color: #3498db;'
+    "%cCheck out my portfolio: %chttps://adkr-portfolio.vercel.app/",
+    "font-size: 16px; color: #2ecc71; font-weight: bold;",
+    "font-size: 16px; color: #3498db;"
 );
 
 //! SNOW STARTS HERE
@@ -73,7 +74,7 @@ var transforms = [
     "msTransform",
     "webkitTransform",
     "mozTransform",
-    "oTransform"
+    "oTransform",
 ];
 
 var transformProperty = getSupportedPropertyName(transforms);
@@ -97,26 +98,6 @@ var resetPosition = false;
 function setup() {
     window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
     window.addEventListener("resize", setResetFlag, false);
-}
-
-// function to execute snowflakes around christmas
-
-let date = new Date();
-// let todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-let currentYear = date.getFullYear();
-
-let todayDate = new Date();
-let start = new Date(`${currentYear}-12-05`);
-let end = new Date(`${currentYear}-12-31`);
-
-// condition to check christmas week
-if (todayDate >= start && todayDate <= end) {
-    var oldElement = document.getElementById('snowflakeInactive');
-    oldElement.id = 'snowflakeContainer';
-    setup();
-    console.log('%c 🎄✨ Merry Christmas! 🎅🌟', 'color: #e44d26; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #228b22;');
-    console.log('%c May your holidays be filled with love, laughter, and magic. 🎁❄️', 'color: #3498db; font-size: 16px;');
-    console.log('  ');
 }
 
 //
@@ -264,38 +245,97 @@ function setResetFlag(e) {
     resetPosition = true;
 }
 
+// function to execute snowflakes around christmas
+
+let date = new Date();
+// let todayDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+let currentYear = date.getFullYear();
+
+let todayDate = new Date();
+
+let start;
+let end;
+
+if(currentYear === 2024) {
+    // console.log("YES");
+    start = new Date(`${currentYear}-01-01`);
+    end = new Date(`${currentYear}-03-02`);
+}
+else {
+    // console.log("NO");
+    start = new Date(`${currentYear}-12-05`);
+    end = new Date(`${currentYear}-12-31`);
+}
+
+
+// condition to check christmas week
+if (todayDate >= start && todayDate <= end) {
+    var oldElement = document.getElementById("snowflakeInactive");
+    oldElement.id = "snowflakeContainer";
+    setup();
+    console.log(
+        "%c 🎄✨ Merry Christmas! 🎅🌟",
+        "color: #e44d26; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #228b22;"
+    );
+    console.log(
+        "%c May your holidays be filled with love, laughter, and magic. 🎁❄️",
+        "color: #3498db; font-size: 16px;"
+    );
+    console.log("  ");
+}
+
 //! SNOW ENDS HERE
+
+//! NEW YEAR
+let newYearDate = new Date(`${currentYear}-01-01`);
+
+// Check if the day and month components match
+if (todayDate.getDate() === newYearDate.getDate() && todayDate.getMonth() === newYearDate.getMonth()) {
+    console.log(
+        "%c 🎄✨ Happy New Year!! 🎅🌟",
+        "color: #e44d26; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #228b22;"
+    );
+} else {
+    var newYearElement = document.getElementById("newYear");
+    newYearElement.className = "new-year-none";
+    var fireElement = document.getElementById("firework");
+    fireElement.className = "none";
+}
+//! NEW YEAR ENDS HERE
 
 
 //! Counter API Starts
 async function fetchData() {
     try {
-        let visitCounter = document.getElementById('visitCount');
-        visitCounter.innerHTML = 'Loading...';
+        let visitCounter = document.getElementById("visitCount");
+        visitCounter.innerHTML = "Loading...";
 
-        const response = await fetch('https://counter-api.onrender.com/counter', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: 'year-bar',
-            }),
-        });
+        const response = await fetch(
+            "https://counter-api.onrender.com/counter",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: "year-bar",
+                }),
+            }
+        );
 
         // Assuming the API returns JSON
         const data = await response.json();
         const visitCount = data?.newData?.visits;
 
-
         visitCounter.innerHTML = visitCount;
 
         // console.log(data.newData.visits);
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
     }
 }
 
-fetchData();
+// fetchData();
 
 //! COUNTER API ENDS
+
