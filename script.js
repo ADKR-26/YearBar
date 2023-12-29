@@ -335,7 +335,7 @@ async function fetchData() {
     }
 }
 
-// fetchData();
+fetchData();
 
 //! COUNTER API ENDS
 
