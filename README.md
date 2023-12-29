@@ -1,6 +1,8 @@
 # YearBar
 
-<h1> Want to know how much Year is completed!!</br> Here you go... </h1><br></br>
+<h1> Want to know how much Year is completed so far..!!
+</br> 
+  Here you go... </h1><br></br>
 
 https://adkr-26.github.io/YearBar/
 
