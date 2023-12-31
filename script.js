@@ -1,7 +1,7 @@
 function getYearPercentage() {
     let today = new Date();
     let year = today.getFullYear();
-    let startDate = new Date(`${year}-01-01`);
+    let startDate = new Date(`${year}-01-01T00:00:00Z`);
     let secondsInAYear = 31536000;
 
     let timeDifference = today - startDate;
@@ -258,18 +258,19 @@ let end;
 
 if(currentYear === 2024) {
     // console.log("YES");
-    start = new Date(`${currentYear}-01-01`);
+    start = new Date(`${currentYear}-01-01T00:00:00Z`);
     end = new Date(`${currentYear}-03-02`);
 }
 else {
     // console.log("NO");
     start = new Date(`${currentYear}-12-05`);
-    end = new Date(`${currentYear}-12-31`);
+    end = new Date(`${currentYear}-12-31T23:59:59Z`);
 }
 
 
 // condition to check christmas week
 if (todayDate >= start && todayDate <= end) {
+    // console.log(todayDate);
     var oldElement = document.getElementById("snowflakeInactive");
     oldElement.id = "snowflakeContainer";
     setup();
