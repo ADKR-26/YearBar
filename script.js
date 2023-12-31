@@ -6,15 +6,38 @@ function getYearPercentage() {
 
     let timeDifference = today - startDate;
 
-    // console.log(timeDifference);
+    // console.log("Today",year);
 
     // var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     let timeDifferenceInSeconds = Math.floor((today - startDate) / 1000);
 
     // daysDifference = 100;
 
+    function getTotalSeconds() {
+        // Define the start date (January 1, 2023, 00:00:00)
+        const startDate = new Date(`${year}-01-01T00:00:00`);
+    
+        // Define the current date and time
+        const currentDate = new Date();
+    
+        // Calculate the difference in milliseconds
+        const timeDifference = currentDate - startDate;
+    
+        // Convert milliseconds to seconds
+        const totalSeconds = Math.floor(timeDifference / 1000);
+    
+        return totalSeconds;
+    }
+    
+    // Call the function and get the total seconds
+    const totalSeconds = getTotalSeconds();
+    
+    // Display the result
+    // console.log(`Total seconds from January 1, 2023, 00:00:00, to now: ${totalSeconds} seconds`);
+    
+
     let yearCompletePercentInSeconds = (
-        (timeDifferenceInSeconds * 100) /
+        (totalSeconds * 100) /
         secondsInAYear
     ).toFixed(6);
     // let yearCompletePercent = ((daysDifference * 100) / 365).toFixed(2);
@@ -274,14 +297,14 @@ if (todayDate >= start && todayDate <= end) {
     var oldElement = document.getElementById("snowflakeInactive");
     oldElement.id = "snowflakeContainer";
     setup();
-    console.log(
-        "%c 🎄✨ Merry Christmas! 🎅🌟",
-        "color: #e44d26; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #228b22;"
-    );
-    console.log(
-        "%c May your holidays be filled with love, laughter, and magic. 🎁❄️",
-        "color: #3498db; font-size: 16px;"
-    );
+    // console.log(
+    //     "%c 🎄✨ Merry Christmas! 🎅🌟",
+    //     "color: #e44d26; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #228b22;"
+    // );
+    // console.log(
+    //     "%c May your holidays be filled with love, laughter, and magic. 🎁❄️",
+    //     "color: #3498db; font-size: 16px;"
+    // );
     console.log("  ");
 }
 
