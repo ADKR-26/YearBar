@@ -1,3 +1,5 @@
+// import visitCount from "./scripts/visitCount.js";
+
 function getYearPercentage() {
     let today = new Date();
     let year = today.getFullYear();
@@ -279,14 +281,14 @@ let todayDate = new Date();
 let start;
 let end;
 
-if(currentYear === 2024) {
+if(currentYear === currentYear + 1) {
     // console.log("YES");
     start = new Date(`${currentYear}-01-01T00:00:00Z`);
     end = new Date(`${currentYear}-03-02`);
 }
 else {
     // console.log("NO");
-    start = new Date(`${currentYear}-12-05`);
+    start = new Date(`${currentYear}-10-01`);
     end = new Date(`${currentYear}-12-31T23:59:59Z`);
 }
 
