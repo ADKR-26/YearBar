@@ -1,56 +1,81 @@
 // import visitCount from "./scripts/visitCount.js";
 
+// function getYearPercentage() {
+//     let today = new Date();
+//     let year = today.getFullYear();
+//     let startDate = new Date(`${year}-01-01T00:00:00Z`);
+//     let secondsInAYear = 31536000;
+
+//     let timeDifference = today - startDate;
+
+//     // console.log("Today",year);
+
+//     // var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+//     let timeDifferenceInSeconds = Math.floor((today - startDate) / 1000);
+
+//     // daysDifference = 100;
+
+//     function getTotalSeconds() {
+//         // Define the start date (January 1, 2023, 00:00:00)
+//         const startDate = new Date(`${year}-01-01T00:00:00`);
+    
+//         // Define the current date and time
+//         const currentDate = new Date();
+    
+//         // Calculate the difference in milliseconds
+//         const timeDifference = currentDate - startDate;
+    
+//         // Convert milliseconds to seconds
+//         const totalSeconds = Math.floor(timeDifference / 1000);
+    
+//         return totalSeconds;
+//     }
+    
+//     // Call the function and get the total seconds
+//     const totalSeconds = getTotalSeconds();
+    
+//     // Display the result
+//     // console.log(`Total seconds from January 1, 2023, 00:00:00, to now: ${totalSeconds} seconds`);
+    
+
+//     let yearCompletePercentInSeconds = (
+//         (totalSeconds * 100) /
+//         secondsInAYear
+//     ).toFixed(6);
+//     // let yearCompletePercent = ((daysDifference * 100) / 365).toFixed(2);
+
+//     // console.log(timeDifferenceInSeconds);
+
+//     var progressBar = document.getElementById("myProgress");
+//     progressBar.value = yearCompletePercentInSeconds;
+
+//     var progressData = document.getElementById("data");
+//     data.innerHTML = yearCompletePercentInSeconds + " %";
+// }
 function getYearPercentage() {
     let today = new Date();
     let year = today.getFullYear();
     let startDate = new Date(`${year}-01-01T00:00:00Z`);
-    let secondsInAYear = 31536000;
 
-    let timeDifference = today - startDate;
+    // Check if the year is a leap year
+    let isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    let secondsInAYear = isLeapYear ? 31622400 : 31536000;
 
-    // console.log("Today",year);
+    // Get the total seconds elapsed in the current year
+    let totalSeconds = Math.floor((today - startDate) / 1000);
 
-    // var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    let timeDifferenceInSeconds = Math.floor((today - startDate) / 1000);
-
-    // daysDifference = 100;
-
-    function getTotalSeconds() {
-        // Define the start date (January 1, 2023, 00:00:00)
-        const startDate = new Date(`${year}-01-01T00:00:00`);
-    
-        // Define the current date and time
-        const currentDate = new Date();
-    
-        // Calculate the difference in milliseconds
-        const timeDifference = currentDate - startDate;
-    
-        // Convert milliseconds to seconds
-        const totalSeconds = Math.floor(timeDifference / 1000);
-    
-        return totalSeconds;
-    }
-    
-    // Call the function and get the total seconds
-    const totalSeconds = getTotalSeconds();
-    
-    // Display the result
-    // console.log(`Total seconds from January 1, 2023, 00:00:00, to now: ${totalSeconds} seconds`);
-    
-
+    // Calculate the percentage of the year completed
     let yearCompletePercentInSeconds = (
         (totalSeconds * 100) /
         secondsInAYear
     ).toFixed(6);
-    // let yearCompletePercent = ((daysDifference * 100) / 365).toFixed(2);
 
-    // console.log(timeDifferenceInSeconds);
-
+    // Update the progress bar and display the percentage
     var progressBar = document.getElementById("myProgress");
     progressBar.value = yearCompletePercentInSeconds;
 
     var progressData = document.getElementById("data");
-    data.innerHTML = yearCompletePercentInSeconds + " %";
+    progressData.innerHTML = yearCompletePercentInSeconds + " %";
 }
 
 setInterval(getYearPercentage, 1000);
