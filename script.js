@@ -52,34 +52,37 @@
 //     data.innerHTML = yearCompletePercentInSeconds + " %";
 // }
 function getYearPercentage() {
-  let today = new Date();
-  let year = today.getFullYear();
-  let startDate = new Date(`${year}-01-01T00:00:00Z`);
-
-  // Check if the year is a leap year
-  let isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  let secondsInAYear = isLeapYear ? 31622400 : 31536000;
-
-  // Get the total seconds elapsed in the current year
-  let totalSeconds = Math.floor((today - startDate) / 1000);
-
-  // Calculate the percentage of the year completed
-  let yearCompletePercentInSeconds = (
-    (totalSeconds * 100) /
-    secondsInAYear
-  ).toFixed(6);
-
-  // Update the progress bar and display the percentage
-  var progressBar = document.getElementById("myProgress");
-  progressBar.value = yearCompletePercentInSeconds;
-
-  var progressData = document.getElementById("data");
-  progressData.innerHTML = yearCompletePercentInSeconds + " %";
-}
-
-setInterval(getYearPercentage, 1000);
-
-getYearPercentage();
+    let today = new Date();
+    let year = today.getFullYear();
+  
+    // Set the start date in the local time zone
+    let startDate = new Date(year, 0, 1, 0, 0, 0); // January 1, 00:00:00 local time
+  
+    // Check if the year is a leap year
+    let isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    let secondsInAYear = isLeapYear ? 31622400 : 31536000;
+  
+    // Get the total seconds elapsed in the current year
+    let totalSeconds = Math.floor((today - startDate) / 1000);
+  
+    // Calculate the percentage of the year completed
+    let yearCompletePercentInSeconds = (
+      (totalSeconds * 100) /
+      secondsInAYear
+    ).toFixed(6);
+  
+    // Update the progress bar and display the percentage
+    var progressBar = document.getElementById("myProgress");
+    progressBar.value = yearCompletePercentInSeconds;
+  
+    var progressData = document.getElementById("data");
+    progressData.innerHTML = yearCompletePercentInSeconds + " %";
+  
+    console.log(`Year Percentage Completed: ${yearCompletePercentInSeconds}%`);
+  }
+  
+  setInterval(getYearPercentage, 1000);
+  
 
 //to show current time
 function getCurrentTime() {
